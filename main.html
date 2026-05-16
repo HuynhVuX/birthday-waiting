@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -10,21 +9,19 @@
 </head>
 
 <body>
-
   <div class="scene" id="scene">
     <canvas id="bgCanvas"></canvas>
+
     <div class="stars" id="stars"></div>
     <div class="dark-overlay"></div>
 
-    <div class="intro" id="intro">
-      Có một món quà nhỏ dành cho bạn
-    </div>
+    <div class="intro" id="intro"></div>
 
     <div class="password-box" id="passwordBox">
       <h2>Nhập mật khẩu 💌</h2>
       <p>Gợi ý: ngày sinh của bạn</p>
 
-      <input id="passwordInput" type="password" placeholder="Nhập mật khẩu">
+      <input id="passwordInput" type="password" maxlength="4" placeholder="Nhập mật khẩu">
 
       <div class="loading-box">
         <div class="loading-fill" id="loadingFill"></div>
@@ -47,66 +44,8 @@
         <p id="letterText"></p>
       </div>
     </div>
-
   </div>
-  <script src="script.js?v=20" charset="UTF-8"></script>
+
+  <script src="script.js?v=31" charset="UTF-8"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-<!-- backup -->
- <!-- <!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <title>Birthday Gift</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-  <div class="scene" id="scene">
-    <canvas id="bgCanvas"></canvas>
-    <div class="stars" id="stars"></div>
-    <div class="dark-overlay"></div>
-    <div class="intro" id="intro">
-      Có một món quà nhỏ dành cho bạn
-    </div>
-    
-      <div class="password-box" id="passwordBox">
-        <h2>Nhập mật khẩu 💌</h2>
-        <p>Gợi ý: ngày sinh của bạn</p>
-        <input id="passwordInput" type="password" placeholder="Nhập mật khẩu">
-        <div class="loading-box">
-        <div class="loading-fill" id="loadingFill"></div>
-        </div>
-        <div class="loading-percent" id="loadingPercent">0%</div>
-        <button id="openBtn">Mở thư</button>
-        <div id="error"></div>
-      </div>
-
-    <div class="letter" id="letter">
-      <div class="photo-wrap">
-        <img src="images/iu.jpg" class="photo" alt="photo">
-      </div>
-
-      <div class="letter-content">
-        <h3 id="letterTitle"></h3>
-        <p id="letterText"></p>
-      </div>
-    </div>
-
-  </div>
-
-  <script src="script.js" charset="UTF-8"></script>
-</body>
-</html> -->
-
-
-

@@ -29,7 +29,7 @@ function updateCountdown() {
 }
 
 function goBirthday() {
-  window.location.href = "./birthday.html";
+  window.location.href = "main.html";
 }
 
 updateCountdown();
