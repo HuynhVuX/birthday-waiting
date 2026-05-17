@@ -2,22 +2,54 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Đợi một chút nhé</title>
-  <link rel="stylesheet" href="wait.css">
+  <title>Birthday Gift</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+  <div class="scene" id="scene">
+    <canvas id="bgCanvas"></canvas>
 
-  <div class="waiting-box">
-    <h1>🎁 Có một món quà đang chờ bạn</h1>
-    <p id="message">Chưa tới thời gian mở quà đâu nha...</p>
+    <div class="stars" id="stars"></div>
+    <div class="dark-overlay"></div>
 
-    <div id="countdown"></div>
+    <div class="intro" id="intro"></div>
 
-    <button id="openBtn" onclick="goBirthday()" disabled>
-      Mở quà sinh nhật 🎂
-    </button>
+    <!-- Ảnh tím thay cho hộp nhập mật khẩu.
+         Người dùng click vào lá thư giữa ảnh để mở phần tiếp theo. -->
+    <div class="password-box" id="passwordBox">
+      <img src="images/start-bg.png" class="pass-bg" alt="birthday-card">
+      <div class="envelope-hit" id="openBtn" aria-label="Mở thư"></div>
+    </div>
+
+    <div class="letter" id="letter">
+      <div class="photo-wrap">
+        <img src="images/iu.jpg" class="photo" alt="photo">
+      </div>
+
+      <div class="letter-content">
+        <h3 id="letterTitle"></h3>
+        <p id="letterText"></p>
+      </div>
+    </div>
+
+    <button class="gallery-btn" id="galleryBtn" type="button">Xem ảnh ➜</button>
+
+    <div class="gallery-overlay" id="galleryOverlay">
+      <button class="gallery-close" id="galleryClose" type="button">×</button>
+
+      <div class="book-carousel" id="bookCarousel">
+        <img src="images/iu.jpg" class="book-item">
+        <img src="images/iu.jpg" class="book-item">
+        <img src="images/iu.jpg" class="book-item">
+        <img src="images/iu.jpg" class="book-item">
+        <img src="images/iu.jpg" class="book-item">
+      </div>
+    </div>
   </div>
 
-  <script src="wait.js" charset="UTF-8"></script>
+  <script src="script.js?v=33" charset="UTF-8"></script>
 </body>
 </html>
