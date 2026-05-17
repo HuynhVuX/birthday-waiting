@@ -17,21 +17,11 @@
 
     <div class="intro" id="intro"></div>
 
+    <!-- Ảnh tím thay cho hộp nhập mật khẩu.
+         Người dùng click vào lá thư giữa ảnh để mở phần tiếp theo. -->
     <div class="password-box" id="passwordBox">
-      <h2>Nhập mật khẩu 💌</h2>
-      <p>Gợi ý: ngày sinh của bạn</p>
-
-      <input id="passwordInput" type="password" maxlength="4" placeholder="Nhập mật khẩu">
-
-      <div class="loading-box">
-        <div class="loading-fill" id="loadingFill"></div>
-      </div>
-
-      <div class="loading-percent" id="loadingPercent">0%</div>
-
-      <button id="openBtn">Mở thư</button>
-
-      <div id="error"></div>
+      <img src="images/start-bg.png" class="pass-bg" alt="birthday-card">
+      <div class="envelope-hit" id="openBtn" aria-label="Mở thư"></div>
     </div>
 
     <div class="letter" id="letter">
@@ -44,8 +34,22 @@
         <p id="letterText"></p>
       </div>
     </div>
+
+    <button class="gallery-btn" id="galleryBtn" type="button">Xem ảnh ➜</button>
+
+    <div class="gallery-overlay" id="galleryOverlay">
+      <button class="gallery-close" id="galleryClose" type="button">×</button>
+
+      <div class="book-carousel" id="bookCarousel">
+        <img src="images/iu.jpg" class="book-item">
+        <img src="images/iu.jpg" class="book-item">
+        <img src="images/iu.jpg" class="book-item">
+        <img src="images/iu.jpg" class="book-item">
+        <img src="images/iu.jpg" class="book-item">
+      </div>
+    </div>
   </div>
 
-  <script src="script.js?v=31" charset="UTF-8"></script>
+  <script src="script.js?v=33" charset="UTF-8"></script>
 </body>
 </html>

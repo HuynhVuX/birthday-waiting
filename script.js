@@ -1,36 +1,38 @@
 const scene = document.getElementById("scene");
 const intro = document.getElementById("intro");
 const passwordBox = document.getElementById("passwordBox");
-const passwordInput = document.getElementById("passwordInput");
 const openBtn = document.getElementById("openBtn");
-const error = document.getElementById("error");
 const letter = document.getElementById("letter");
 const letterTitle = document.getElementById("letterTitle");
 const letterText = document.getElementById("letterText");
-const loadingFill = document.getElementById("loadingFill");
-const loadingPercent = document.getElementById("loadingPercent");
 const starsLayer = document.getElementById("stars");
 const bgCanvas = document.getElementById("bgCanvas");
 const ctx = bgCanvas.getContext("2d");
 
-const correctPassword = "1705";
 const titleContent = "Chúc mừng sinh nhật";
 
 const letterContent = `
-Chúc bạn sinh nhật thật vui vẻ,
-luôn hạnh phúc và gặp thật nhiều điều may mắn trong cuộc sống.
+Chuc mừng sinh nhật Ngân nèee! 🎉,
+Tuổi mới, mọi thứ đều suôn sẻ 💖🌷🌷🌷
+Mọi khó khăn đều luôn có cách vượt qua 🌝🌝
+Tuy là, sắp tới là một du học sinh. 
+Nhưng mà...
+Tui biết là dù ở đâu Kim Ngân cũng là một tia sáng 🤣 
+加油💪  ya, quen biết nhau cũng khá lâu năm ròi 🤣
+Cảm ơn vì đã xuất hiện và mang đến rất nhiều điều dễ thương,tử tế.
+Mong rằng tuổi mới sẽ dịu dàng với Ngân hơn,
+Và mọi điều mong muốn đều sẽ trở thành hiện thực 💖
+Phía dưới có một list ảnh.Mong là chúng ta sẽ có nhiều kỷ niệm chung nữa ha :v
 
-Cảm ơn vì đã xuất hiện và mang đến rất nhiều điều dễ thương.
 
-Mong rằng tuổi mới sẽ dịu dàng với bạn hơn,
-và mọi điều bạn mong muốn đều sẽ trở thành hiện thực 💖
 `;
 
 const messages = [
-  "Có một món quà nhỏ dành cho bạn...",
-  "Một điều mình đã chuẩn bị khá lâu...",
-  "Hy vọng khi mở ra bạn sẽ mỉm cười ✨",
-  "Ready chưa nào?"
+  "Có một món quà nho nhỏ dành cho Ngân nèee...",
+  "Một điều mình đã chuẩn bị gần đây, tuy còn hơi vụng một chút......",
+  "Hy vọng khi xem bạnnn sẽ mỉm cười ✨",
+  "Ready chưa nàoooooooooo",
+  "Goooooooooooooo!"
 ];
 
 let sentenceIndex = 0;
@@ -101,16 +103,9 @@ function typeWriter(element, text, speed = 24, callback = null){
 function openLetter(){
   if(isOpening || letterOpened) return;
 
-  const pass = passwordInput.value.trim();
-
-  if(pass !== correctPassword){
-    error.innerText = "Sai mật khẩu rồi 😝 thử lại nha";
-    return;
-  }
-
   isOpening = true;
   letterOpened = true;
-  error.innerText = "";
+
   passwordBox.classList.add("hide");
 
   setTimeout(() => {
@@ -131,32 +126,8 @@ function openLetter(){
   }, 900);
 }
 
-function updatePasswordProgress(){
-  const value = passwordInput.value.trim();
-  let correctCount = 0;
-
-  for(let i = 0; i < value.length; i++){
-    if(value[i] === correctPassword[i]){
-      correctCount++;
-    }else{
-      break;
-    }
-  }
-
-  const percent = Math.floor((correctCount / correctPassword.length) * 100);
-  loadingFill.style.width = percent + "%";
-  loadingPercent.innerText = percent + "%";
-
-  if(percent === 100){
-    setTimeout(openLetter, 600);
-  }
-}
-
 openBtn.addEventListener("click", openLetter);
-passwordInput.addEventListener("input", updatePasswordProgress);
-passwordInput.addEventListener("keydown", (e) => {
-  if(e.key === "Enter") openLetter();
-});
+
 
 function resizeCanvas(){
   bgCanvas.width = window.innerWidth;
@@ -251,6 +222,7 @@ function showCakeAndName(){
 
       document.fonts.ready.then(() => {
         makeNameFromStars();
+        showGalleryButton();
       });
     }, 900);
   }, 2500);
@@ -331,3 +303,138 @@ function makeNameFromStars(){
 }
 
 typeSentence();
+
+
+/* ===== GALLERY OPEN/CLOSE ===== */
+const galleryBtn = document.getElementById("galleryBtn");
+const galleryOverlay = document.getElementById("galleryOverlay");
+const galleryClose = document.getElementById("galleryClose");
+
+function showGalleryButton(){
+  if(galleryBtn){
+    galleryBtn.classList.add("show");
+  }
+}
+
+if(galleryBtn && galleryOverlay){
+
+  galleryBtn.addEventListener("click", () => {
+
+    // mở gallery
+    galleryOverlay.classList.add("show");
+
+    // ẩn thư
+    if(letter){
+      letter.style.opacity = "0";
+      letter.style.pointerEvents = "none";
+    }
+
+// ẩn bánh gif
+  document.querySelectorAll(".big-cake").forEach((cake) => {
+    cake.style.display = "none";
+  });
+
+    // ẩn tên bằng sao
+    document.querySelectorAll(".star.name-mode").forEach((star) => {
+      star.style.opacity = "0";
+    });
+
+  });
+
+}
+
+if(galleryClose && galleryOverlay){
+
+  galleryClose.addEventListener("click", () => {
+
+    // đóng gallery
+    galleryOverlay.classList.remove("show");
+
+    // hiện lại thư
+    if(letter){
+      letter.style.opacity = "1";
+      letter.style.pointerEvents = "auto";
+    }
+
+    // hiện lại bánh
+    // hiện lại bánh gif
+    document.querySelectorAll(".big-cake").forEach((cake) => {
+      cake.style.display = "block";
+    });
+
+    // hiện lại tên sao
+    document.querySelectorAll(".star.name-mode").forEach((star) => {
+      star.style.opacity = "1";
+    });
+
+  });
+
+}
+
+
+
+
+/* ===== BOOK CAROUSEL CONTROL ===== */
+
+const bookItems = Array.from(document.querySelectorAll(".book-item"));
+let activeBookIndex = 0;
+
+function renderBookCarousel(){
+  const total = bookItems.length;
+
+  bookItems.forEach((item, index) => {
+    item.className = "book-item";
+
+    let diff = index - activeBookIndex;
+
+    if(diff > total / 2) diff -= total;
+    if(diff < -total / 2) diff += total;
+
+    if(diff === 0){
+      item.classList.add("active");
+    }else if(diff === -1){
+      item.classList.add("prev");
+    }else if(diff === 1){
+      item.classList.add("next");
+    }else if(diff === -2){
+      item.classList.add("prev2");
+    }else if(diff === 2){
+      item.classList.add("next2");
+    }else{
+      item.classList.add("hidden");
+    }
+  });
+}
+
+bookItems.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    activeBookIndex = index;
+    renderBookCarousel();
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  if(!galleryOverlay.classList.contains("show")) return;
+
+  if(e.key === "ArrowLeft"){
+    activeBookIndex--;
+
+    if(activeBookIndex < 0){
+      activeBookIndex = bookItems.length - 1;
+    }
+
+    renderBookCarousel();
+  }
+
+  if(e.key === "ArrowRight"){
+    activeBookIndex++;
+
+    if(activeBookIndex >= bookItems.length){
+      activeBookIndex = 0;
+    }
+
+    renderBookCarousel();
+  }
+});
+
+renderBookCarousel();
