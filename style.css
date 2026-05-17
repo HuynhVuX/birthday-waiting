@@ -588,10 +588,13 @@ pointer-events:auto;
 .book-item{
   position:absolute;
 
-  width:360px;
-  height:500px;
+  width:auto;
+  height:min(70vh,620px);
 
-  object-fit:cover;
+  max-width:min(38vw,520px);
+
+  object-fit:contain;
+
   border-radius:22px;
 
   box-shadow:
@@ -662,11 +665,10 @@ pointer-events:auto;
     height:68vh;
   }
 
-  .book-item{
-    width:220px;
-    height:330px;
-    border-radius:18px;
-  }
+.book-item{
+    width:auto;
+    height:42vh;
+    max-width:58vw;
 
   .book-item.prev{
     transform:translateX(-170px) scale(.68) rotateY(28deg);
